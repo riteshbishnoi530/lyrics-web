@@ -1,46 +1,46 @@
-import React, { useEffect, useState } from 'react'
-import { HEADER_LIST } from '../utils/helper';
+import React from 'react'
+import { SearchIcon } from '../utils/Icons';
 
 const Header = () => {
-    const [open, setOpen] = useState(false);
-    const toggleSidebar = () => setOpen(!open);
-    useEffect(() => {
-        const handleOverflow = () => {
-            if (open && window.innerWidth < 1024) {
-                document.body.classList.add("overflow-hidden");
-            } else {
-                document.body.classList.remove("overflow-hidden");
-            }
-        };
-        handleOverflow();
-        window.addEventListener("resize", handleOverflow);
-        return () => {
-            window.removeEventListener("resize", handleOverflow);
-        };
-    }, [open]);
-    return (
-        <div className='pt-3.5 px-4 overflow-hidden min-[1921px]:max-w-[1920px] mx-auto'>
-            <div className='container flex justify-between items-center'>
-                <a href="/"><img className='max-w-[156px] pointer-events-none' src="/assets/images/logo.webp" alt="logo" /></a>
-                <div className={`flex gap-6 max-lg:flex-col max-lg:justify-center max-lg:items-center ${open ? 'max-lg:z-10 max-lg:translate-x-0 max-lg:bg-black max-lg:fixed max-lg:top-0 max-lg:left-0 max-lg:h-full max-lg:w-full duration-500 ease-linear blur-[80%] justify-center items-center' : 'max-lg:-left-full max-lg:hidden duration-500 ease-linear'}`}>
-                    {HEADER_LIST.map((obj, i) => (
-                        <ul key={i}>
-                            <li className='flex gap-1 flex-row justify-center items-center relative after:absolute after:w-0 after:transition-all after:duration-300 after:hover:w-full after:bottom-0 after:h-0.5 after:bg-white pb-0.5'>
-                                <a onClick={toggleSidebar} href={obj.link} className=' text-base font-normal text-white'>{obj.item}</a>
-                            </li>
-                        </ul>
-                    ))}
-                    <button className='lg:hidden text-xl font-semibold rounded-full text-black bg-white py-[13.5px] px-8 hover:scale-110 duration-300 ease-linear'>Connect Wallet</button>
-                </div>
-                <button className='max-lg:hidden text-xl font-semibold rounded-full text-black bg-white py-[13.5px] px-8  hover:scale-110 duration-300 ease-linear'>Connect Wallet</button>
-                <div onClick={toggleSidebar} className='z-[15] flex-col gap-1 lg:hidden flex'>
-                    <span className={`${open ? 'w-8 h-1 bg-white rotate-45 translate-y-3 duration-300 ease-linear rounded' : 'w-8 h-1 bg-white duration-300 ease-linear rounded'}`}></span>
-                    <span className={`${open ? 'w-8 h-1 bg-white  opacity-0 duration-300 ease-linear' : 'w-8 h-1 bg-white duration-700 ease-linear rounded'}`}></span>
-                    <span className={`${open ? 'w-8 h-1 bg-white -rotate-45 -translate-y-1 duration-300 ease-linear rounded' : 'w-8 h-1 bg-white duration-300 ease-linear rounded'}`}></span>
-                </div>
-            </div>
-        </div>
-    )
+  return (
+    <nav className="w-full max-w-[1128px] header-shadow rounded-[20px] flex items-center justify-between py-[10px] max-md:flex-wrap max-lg:gap-6 max-sm:gap-2 mt-[10px]">
+      <a href="/">
+        <img
+          src="/assets/images/logo.webp"
+          alt="logo"
+          className="ps-[38px] max-w-[135px] max-md:ps-6"
+        />
+      </a>
+      <div className=" max-md:hidden flex items-center rounded-full w-full max-w-[650px] justify-between border border-solid border-[#DBDBF3] ps-[30px] pe-2 max-lg:ps-2">
+        <input
+          type="text"
+          placeholder="What do you feel like listening to right now ?"
+          className=" placeholder:text-sm text-sm font-normal placeholder:font-normal leading-6 placeholder:left-6 placeholder:text-[#333333] outline-none w-full"
+        />
+        <p className="flex items-center justify-center size-[39px] rounded-full bg-black cursor-pointer my-[6px]">
+          <SearchIcon />
+        </p>
+      </div>
+      <div className="flex items-center gap-5">
+        <button className="text-[#14191C] hover:bg-[#14191C] hover:text-white px-3 py-2 rounded-[9px] transition-all ease-linear duration-200 text-sm leading-6 font-normal">
+          Login
+        </button>
+        <button className="me-3 bg-[#14191C] text-white font-medium text-sm leading-6 rounded-[9px] border border-[#14191C] hover:bg-white hover:text-[#14191C] transition-all ease-linear duration-200 w-full min-w-[105px] max-sm:min-w-[85px] py-[9px] h-[43px]">
+          Sign Up
+        </button>
+      </div>
+      <div className="md:hidden flex items-center rounded-full w-full max-w-[650px] justify-between border border-solid border-[#DBDBF3] ps-[30px] pe-2 max-md:ps-2">
+        <input
+          type="text"
+          placeholder="What do you feel like listening to right now ?"
+          className=" placeholder:text-sm text-sm font-normal placeholder:font-normal leading-6 placeholder:left-6 placeholder:text-[#333333] outline-none w-full max-md:text-xs"
+        />
+        <p className="flex items-center justify-center h-[39px] min-w-[39px] rounded-full bg-black cursor-pointer my-[6px]">
+          <SearchIcon />
+        </p>
+      </div>
+    </nav>
+  );
 }
 
 export default Header
