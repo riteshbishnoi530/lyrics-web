@@ -6,12 +6,12 @@ import Header from "./Header";
 
 const Hero = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [artistName, setArtistName] = useState("Billie Eilish");  // New state for artist name
+  const [artistName, setArtistName] = useState("Billie Eilish");
   const navigate = useNavigate();
 
   const handleAlphabetClick = (letter) => {
-    const newName = `${letter.toUpperCase()}`;  // Example dynamic name generation
-    setArtistName(newName);  // Update artist name
+    const newName = `${letter.toUpperCase()}`;
+    setArtistName(newName);
     navigate(`?letter=${letter.toLowerCase()}`);
   };
 
