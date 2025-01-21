@@ -1,27 +1,31 @@
 import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { ALPHABET_LIST } from "../utils/helper";
-import { useNavigate } from "react-router-dom";
 import { DownArrow } from "../utils/Icons";
 import Header from "./Header";
 
 const Hero = () => {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [artistName, setArtistName] = useState("Billie Eilish");
+  const { category } = useParams();
+  const [selectedCategory, setSelectedCategory] = useState(category);
+  const [artistName, setArtistName] = useState("");
   const navigate = useNavigate();
 
   const handleAlphabetClick = (letter) => {
     const newName = `${letter.toUpperCase()}`;
     setArtistName(newName);
-    navigate(`?letter=${letter.toLowerCase()}`);
+    navigate(`/${selectedCategory}?letter=${letter.toLowerCase()}`);
   };
 
-  const handleCategoryClick = (category) => setSelectedCategory(category);
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+    navigate(`/${category.toLowerCase()}`);
+  };
 
   const getHeading = () => ({
-    Pop: "Hit Me Hard and Soft Pop",
-    Rock: "Hit Me Hard and Soft Rock",
-    All: "Hit Me Hard and Soft",
-    More: "Hit Me Hard and Soft More",
+    pop: "Hit Me Hard and Soft Pop",
+    rock: "Hit Me Hard and Soft Rock",
+    all: "Hit Me Hard and Soft",
+    more: "Hit Me Hard and Soft More",
   }[selectedCategory] || "Hit Me Hard and Soft");
 
   return (
@@ -32,25 +36,25 @@ const Hero = () => {
           <div className="flex items-center gap-5 me-[15px]">
             <button
               className="min-w-[49px] h-[29px] text-xs leading-6 border border-solid border-black rounded-[9px] bg-transparent transition-all ease-linear duration-200 hover:bg-black hover:text-white font-normal text-[#14191C]"
-              onClick={() => handleCategoryClick("All")}
+              onClick={() => handleCategoryClick("all")}
             >
               All
             </button>
             <button
               className="min-w-[47px] h-[29px] text-xs leading-6 border border-solid border-black rounded-[9px] bg-transparent transition-all ease-linear duration-200 hover:bg-black hover:text-white font-normal text-[#14191C]"
-              onClick={() => handleCategoryClick("Pop")}
+              onClick={() => handleCategoryClick("pop")}
             >
               Pop
             </button>
             <button
               className="h-[29px] min-w-[54px] text-xs leading-6 border border-solid border-black rounded-[9px] bg-transparent transition-all ease-linear duration-200 hover:bg-black hover:text-white font-normal text-[#14191C]"
-              onClick={() => handleCategoryClick("Rock")}
+              onClick={() => handleCategoryClick("rock")}
             >
               Rock
             </button>
             <button
               className="flex items-center gap-4 justify-center h-[29px] min-w-[64px] text-xs leading-6 border border-solid border-black rounded-[9px] bg-transparent transition-all ease-linear duration-200 font-normal text-[#14191C]"
-              onClick={() => handleCategoryClick("More")}
+              onClick={() => handleCategoryClick("more")}
             >
               More <DownArrow />
             </button>
@@ -79,7 +83,7 @@ const Hero = () => {
                 />
                 <div className="flex flex-col">
                   <h3 className="text-white text-[32px] font-semibold leading-[42px]">
-                    {artistName}
+                    Billie Eilish {artistName}
                   </h3>
                   <p className="text-base text-[#CECECE] font-medium leading-[19.5px]">
                     Released May 17, 2024
@@ -94,7 +98,7 @@ const Hero = () => {
                 />
                 <div className="flex flex-col">
                   <h3 className="text-white text-[32px] font-semibold leading-[42px] max-lg:text-2xl">
-                  Billie Eilish {artistName}
+                    Billie Eilish {artistName}
                   </h3>
                   <p className="text-base text-[#CECECE] font-medium leading-[19.5px]">
                     Released May 17, 2024
@@ -105,7 +109,7 @@ const Hero = () => {
             <img
               src="/assets/images/hero-img.webp"
               alt="hero"
-              className="py-[43px] pe-[43px] max-w-[261px] max-lg:max-w-[200px] max-sm:max-w-[150px] max-lg:p-10 max-md:p-6 max-sm:p-4"
+              className="pointer-events-none py-[43px] pe-[43px] max-w-[261px] max-lg:max-w-[200px] max-sm:max-w-[150px] max-lg:p-10 max-md:p-6 max-sm:p-4"
             />
           </div>
         </div>

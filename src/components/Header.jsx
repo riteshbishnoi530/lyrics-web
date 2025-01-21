@@ -17,7 +17,7 @@ const Header = () => {
           placeholder="What do you feel like listening to right now ?"
           className=" placeholder:text-sm text-sm font-normal placeholder:font-normal leading-6 placeholder:left-6 placeholder:text-[#333333] outline-none w-full"
         />
-        <p className="flex items-center justify-center size-[39px] rounded-full bg-black cursor-pointer my-[6px]">
+        <p className="flex items-center justify-center size-[39px] rounded-full hover:scale-105 transition-all ease-in-out duration-300 bg-black cursor-pointer my-[6px]">
           <SearchIcon />
         </p>
       </div>
@@ -35,7 +35,7 @@ const Header = () => {
           placeholder="What do you feel like listening to right now ?"
           className=" placeholder:text-sm text-sm font-normal placeholder:font-normal leading-6 placeholder:left-6 placeholder:text-[#333333] outline-none w-full max-md:text-xs"
         />
-        <p className="flex items-center justify-center h-[39px] min-w-[39px] rounded-full bg-black cursor-pointer my-[6px]">
+        <p className="flex items-center justify-center h-[39px] min-w-[39px] rounded-full bg-black hover:scale-105 transition-all ease-in-out duration-300 my-[6px]">
           <SearchIcon />
         </p>
       </div>
