@@ -32,8 +32,8 @@ const Hero = () => {
     <div className="max-xl:pb-10">
       <div className="container">
         <Header />
-        <div className="flex items-center mt-[17px] overflow-x-auto">
-          <div className="flex items-center gap-5 me-[15px]">
+        <div className="flex items-center mt-[17px] overflow-x-auto pb-2">
+          <div className="flex items-center gap-[5px] me-[15px]">
             <button
               className="min-w-[49px] h-[29px] text-xs leading-6 border border-solid border-black rounded-[9px] bg-transparent transition-all ease-linear duration-200 hover:bg-black hover:text-white font-normal text-[#14191C]"
               onClick={() => handleCategoryClick("all")}
