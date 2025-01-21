@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { ALPHABET_LIST } from "../utils/helper";
 import { DownArrow } from "../utils/Icons";
 import Header from "./Header";
@@ -9,6 +9,17 @@ const Hero = () => {
   const [selectedCategory, setSelectedCategory] = useState(category);
   const [artistName, setArtistName] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const letter = params.get("letter");
+    if (letter) {
+      setArtistName(letter.toUpperCase());
+    } else {
+      setArtistName("");
+    }
+  }, [location.search]);
 
   const handleAlphabetClick = (letter) => {
     const newName = `${letter.toUpperCase()}`;
@@ -28,6 +39,12 @@ const Hero = () => {
     more: "Hit Me Hard and Soft More",
   }[selectedCategory] || "Hit Me Hard and Soft");
 
+  const getCategoryButtonClass = (category) => {
+    return selectedCategory === category
+      ? "px-3 py-[2px] text-xs leading-6 border border-solid border-black rounded-[9px] bg-black text-white font-normal"
+      : "px-3 py-[2px] text-xs leading-6 border border-solid border-black rounded-[9px] bg-transparent text-[#14191C] font-normal transition-all ease-linear duration-200 hover:bg-black hover:text-white";
+  };
+
   return (
     <div className="max-xl:pb-10">
       <div className="container">
@@ -35,19 +52,19 @@ const Hero = () => {
         <div className="flex items-center mt-[17px] overflow-x-auto pb-2">
           <div className="flex items-center gap-[5px] me-[15px]">
             <button
-              className="min-w-[49px] h-[29px] text-xs leading-6 border border-solid border-black rounded-[9px] bg-transparent transition-all ease-linear duration-200 hover:bg-black hover:text-white font-normal text-[#14191C]"
+              className={getCategoryButtonClass("all")}
               onClick={() => handleCategoryClick("all")}
             >
               All
             </button>
             <button
-              className="min-w-[47px] h-[29px] text-xs leading-6 border border-solid border-black rounded-[9px] bg-transparent transition-all ease-linear duration-200 hover:bg-black hover:text-white font-normal text-[#14191C]"
+              className={getCategoryButtonClass("pop")}
               onClick={() => handleCategoryClick("pop")}
             >
               Pop
             </button>
             <button
-              className="h-[29px] min-w-[54px] text-xs leading-6 border border-solid border-black rounded-[9px] bg-transparent transition-all ease-linear duration-200 hover:bg-black hover:text-white font-normal text-[#14191C]"
+              className={getCategoryButtonClass("rock")}
               onClick={() => handleCategoryClick("rock")}
             >
               Rock
