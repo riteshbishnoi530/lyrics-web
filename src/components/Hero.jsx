@@ -86,7 +86,7 @@ const Hero = () => {
             </p>
           ))}
         </div>
-        <div className="w-full max-w-[1141px] mx-auto rounded-[20px] bg-[#14191C] h-[347px] relative mt-[43px] max-lg:h-full">
+        <div className="w-full max-w-[1141px] mx-auto rounded-[20px] bg-[#14191C] relative mt-[43px] max-lg:h-full">
           <div className="flex justify-between max-lg:flex-wrap">
             <div className="flex flex-col ps-[48px] pt-[48px] max-xl:ps-8 max-xl:pt-8 max-md:ps-5 max-md:pt-5">
               <h1 className="text-5xl max-lg:text-4xl max-md:text-3xl font-bold leading-[58.51px] text-[#FAFAFF] uppercase">
@@ -123,11 +123,13 @@ const Hero = () => {
                 </div>
               </div>
             </div>
+            <div className="max-lg:p-10 p-[43px] pl-0 max-md:p-6 max-sm:p-4">
             <img
               src="/assets/images/hero-img.webp"
               alt="hero"
-              className="pointer-events-none py-[43px] pe-[43px] max-w-[261px] max-lg:max-w-[200px] max-sm:max-w-[150px] max-lg:p-10 max-md:p-6 max-sm:p-4"
+              className="pointer-events-none max-w-[261px] max-lg:max-w-[200px] max-sm:max-w-[150px]"
             />
+            </div>
           </div>
         </div>
       </div>
