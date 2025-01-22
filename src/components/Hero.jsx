@@ -5,7 +5,7 @@ import { DownArrow } from "../utils/Icons";
 import Header from "./Header";
 
 const Hero = () => {
-  const { category } = useParams();
+  const { category = "all" } = useParams();
   const [selectedCategory, setSelectedCategory] = useState(category);
   const [artistName, setArtistName] = useState("");
   const navigate = useNavigate();
