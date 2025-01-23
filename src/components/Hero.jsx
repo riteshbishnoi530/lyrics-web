@@ -124,11 +124,11 @@ const Hero = () => {
               </div>
             </div>
             <div className="max-lg:p-10 p-[43px] pl-0 max-md:p-6 max-sm:p-4">
-            <img
-              src="/assets/images/hero-img.webp"
-              alt="hero"
-              className="pointer-events-none max-w-[261px] max-lg:max-w-[200px] max-sm:max-w-[150px]"
-            />
+              <img
+                src="/assets/images/hero-img.webp"
+                alt="hero"
+                className="pointer-events-none max-w-[261px] max-lg:max-w-[200px] max-sm:max-w-[150px]"
+              />
             </div>
           </div>
         </div>
